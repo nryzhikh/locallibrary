@@ -1,0 +1,42 @@
+<h1>{{title}}</h1>
+
+<form method="POST" action="">
+  <div class="form-group">
+    <label for="book">Book:</label>
+    <select id="book" class="form-control" name="book" required="true">
+      {{#each book_list}}
+        <option value="{{this._id}}" {{#if (eq selected_book this._id)}}selected{{/if}}>{{this.title}}</option>
+      {{/each}}
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="imprint">Imprint:</label>
+    <input id="imprint" class="form-control" type="text" placeholder="Publisher and date information" name="imprint" required="true" value="{{bookinstance.imprint}}">
+  </div>
+
+  <div class="form-group">
+    <label for="due_back">Date when book available:</label>
+    <input id="due_back" class="form-control" type="date" name="due_back" value="{{bookinstance.due_back_yyyy_mm_dd}}">
+  </div>
+
+  <div class="form-group">
+    <label for="status">Status:</label>
+    <select id="status" class="form-control" name="status" required="true">
+      <option value="Maintenance" {{#if (eq bookinstance.status 'Maintenance')}}selected{{/if}}>Maintenance</option>
+      <option value="Available" {{#if (eq bookinstance.status 'Available')}}selected{{/if}}>Available</option>
+      <option value="Loaned" {{#if (eq bookinstance.status 'Loaned')}}selected{{/if}}>Loaned</option>
+      <option value="Reserved" {{#if (eq bookinstance.status 'Reserved')}}selected{{/if}}>Reserved</option>
+    </select>
+  </div>
+
+  <button class="btn btn-primary" type="submit">Submit</button>
+</form>
+
+{{#if errors}}
+  <ul>
+    {{#each errors}}
+      <li>{{{this.msg}}}</li>
+    {{/each}}
+  </ul>
+{{/if}}

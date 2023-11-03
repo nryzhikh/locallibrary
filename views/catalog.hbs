@@ -1,0 +1,40 @@
+<section>
+    <h1>{{title}}</h1>
+
+    <p>This is a line with <em>some emphasis</em> and <strong>strong text</strong> markup.</p>
+    <p>This line has un-escaped data: <em> is emphasized</em> and escaped data: &lt;em&gt; is not emphasized&lt;/em&gt;.
+        This line follows on.</p>
+    <p>Evaluated and &lt;em&gt;escaped expression&lt;/em&gt;: {{title}}</p>
+
+    <!-- You can add HTML comments directly -->
+    <!-- You can add single line JavaScript comments and they are generated to HTML comments -->
+    <!-- Introducing a single line JavaScript comment with "//-" ensures the comment isn't rendered to HTML -->
+
+    <p>A line with a link
+        <a href="/catalog/authors">Some link text</a>
+        and some extra text.
+    </p>
+
+    <div id="container" class="col">
+        {{#if title}}
+        <p>A variable named "title" exists.</p>
+        {{else}}
+        <p>A variable named "title" does not exist.</p>
+        {{/if}}
+        <p>
+            Pug is a terse and simple template language with a
+            strong focus on performance and powerful features.
+        </p>
+    </div>
+
+    <h2>Generate a list</h2>
+
+    <ul>{{#if array}}
+        {{#each array}}
+        <li>{{this}}</li>
+        {{/each}}
+        {{else}}
+        <li>Empty list</li>
+        {{/if}}
+    </ul>
+</section>
